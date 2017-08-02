@@ -2,6 +2,7 @@
 const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ngcWebpack = require('ngc-webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let postcssLoader = {
     loader: 'postcss-loader',
@@ -43,8 +44,15 @@ module.exports = {
                 }],
             },
             {
-                test: /\.(css|scss)/,
+                test: /app.*\.(css|scss)/,
                 use: ['to-string-loader', 'css-loader', postcssLoader, 'sass-loader'],
+            },
+            {
+                test: /\.(css|scss)$/,
+                exclude: /app/,
+                loader: ExtractTextPlugin.extract({
+                    use: ['css-loader', postcssLoader, 'sass-loader'],
+                })
             },
             {
                 test: /\.html$/,
@@ -64,5 +72,6 @@ module.exports = {
             disabled: false,
             tsConfig: './tsconfig.json',
         }),
+        new ExtractTextPlugin("bundle.css"),
     ]
 };

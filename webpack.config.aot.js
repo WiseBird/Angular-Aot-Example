@@ -1,6 +1,7 @@
 const path = require('path');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ngToolsWebpack = require('@ngtools/webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let postcssLoader = {
         loader: 'postcss-loader',
@@ -23,8 +24,15 @@ module.exports = {
         rules: [
             { test: /.ts$/, use: '@ngtools/webpack' },
             {
-                test: /\.(css|scss)/,
+                test: /app.*\.(css|scss)/,
                 use: ['to-string-loader', 'css-loader', postcssLoader, 'sass-loader'],
+            },
+            {
+                test: /\.(css|scss)$/,
+                exclude: /app/,
+                loader: ExtractTextPlugin.extract({
+                    use: ['css-loader', postcssLoader, 'sass-loader'],
+                })
             },
             {
                 test: /\.html$/,
@@ -39,5 +47,6 @@ module.exports = {
             skipMetadataEmit: true,
             entryModule: 'src/app/app.module#AppModule',
         }),
+        new ExtractTextPlugin("bundle.css"),
     ]
 };
