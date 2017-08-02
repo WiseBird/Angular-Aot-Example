@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ngToolsWebpack = require('@ngtools/webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let postcssLoader = {
         loader: 'postcss-loader',
@@ -76,5 +77,10 @@ module.exports = {
                 arg.request = arg.request.replace('node_modules/ng2-bootstrap/', '');
             }
         ),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            inject: true,
+            filename: "bundle.html",
+        }),
     ]
 };
