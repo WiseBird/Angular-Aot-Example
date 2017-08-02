@@ -105,5 +105,13 @@ module.exports = {
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new ProgressBarPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                unused: true,
+                dead_code: true,
+                drop_console: false,
+                warnings: false,
+            },
+        }),
     ]
 };
