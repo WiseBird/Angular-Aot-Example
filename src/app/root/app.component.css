@@ -1,3 +1,7 @@
 :host {
     color: black;
 }
+
+h1 {
+    background-image: url('../../images/check-off.png');
+}
