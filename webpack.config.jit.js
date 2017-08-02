@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 let postcssLoader = {
     loader: 'postcss-loader',
@@ -112,5 +113,11 @@ module.exports = {
             names: ["vendor"],
             minChunks: isExternal
         }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ["manifest"],
+            minChunks: Infinity
+        }),
+        new webpack.NoEmitOnErrorsPlugin(),
+        new ProgressBarPlugin(),
     ]
 };
