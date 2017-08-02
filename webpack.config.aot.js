@@ -2,12 +2,14 @@ const path = require('path');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ngToolsWebpack = require('@ngtools/webpack');
 
-var _root = path.resolve(__dirname, '..');
-function root(args) {
-    args = Array.prototype.slice.call(arguments, 0);
-    return path.join.apply(path, [_root].concat(args));
-}
-
+let postcssLoader = {
+        loader: 'postcss-loader',
+        options: {
+            plugins: () => [
+            require('autoprefixer')({browsers: 'last 3 Chrome versions'}),
+        ],
+    },
+};
 
 module.exports = {
     entry: './src/index.ts',
@@ -22,7 +24,7 @@ module.exports = {
             { test: /.ts$/, use: '@ngtools/webpack' },
             {
                 test: /\.(css|scss)/,
-                use: ['to-string-loader', 'css-loader', 'sass-loader'],
+                use: ['to-string-loader', 'css-loader', postcssLoader, 'sass-loader'],
             },
             {
                 test: /\.html$/,

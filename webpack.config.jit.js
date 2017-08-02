@@ -2,6 +2,15 @@
 const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
+let postcssLoader = {
+    loader: 'postcss-loader',
+    options: {
+        plugins: () => [
+            require('autoprefixer')({browsers: 'last 3 Chrome versions'}),
+        ],
+    },
+};
+
 module.exports = {
     entry: './src/index.ts',
     output: {
@@ -29,7 +38,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)/,
-                use: ['to-string-loader', 'css-loader', 'sass-loader'],
+                use: ['to-string-loader', 'css-loader', postcssLoader, 'sass-loader'],
             },
             {
                 test: /\.html$/,
