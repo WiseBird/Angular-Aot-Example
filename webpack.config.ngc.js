@@ -16,6 +16,13 @@ module.exports = {
             {
                 test: /.ts$/,
                 use: [{
+                    loader: 'ng-router-loader',
+                    options: {
+                        loader: 'async-import',
+                        genDir: 'compiled',
+                        aot: true,
+                    }
+                }, {
                     loader: 'awesome-typescript-loader',
                 }, {
                     loader: 'ngc-webpack',
