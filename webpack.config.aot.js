@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ngToolsWebpack = require('@ngtools/webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -48,5 +49,19 @@ module.exports = {
             entryModule: 'src/app/app.module#AppModule',
         }),
         new ExtractTextPlugin("bundle.css"),
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            d3: "d3",
+            _: "lodash"
+        }),
+        new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /en-gb/),
+        new webpack.NormalModuleReplacementPlugin(
+            /ng2-bootstrap.+moment/,
+            function (arg) {
+                arg.request = arg.request.replace('node_modules/ng2-bootstrap/', '');
+            }
+        ),
     ]
 };

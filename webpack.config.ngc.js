@@ -73,5 +73,19 @@ module.exports = {
             tsConfig: './tsconfig.json',
         }),
         new ExtractTextPlugin("bundle.css"),
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            d3: "d3",
+            _: "lodash"
+        }),
+        new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /en-gb/),
+        new webpack.NormalModuleReplacementPlugin(
+            /ng2-bootstrap.+moment/,
+            function (arg) {
+                arg.request = arg.request.replace('node_modules/ng2-bootstrap/', '');
+            }
+        ),
     ]
 };
