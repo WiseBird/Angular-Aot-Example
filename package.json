@@ -28,6 +28,8 @@
     "raw-loader": "0.5.1",
     "ngc-webpack": "3.1.1",
     "ng-router-loader": "2.1.0",
-    "webpack": "3.0.0"
+    "sass-loader": "6.0.6",
+    "node-sass": "4.5.3",
+    "webpack": "3.4.1"
   }
 }

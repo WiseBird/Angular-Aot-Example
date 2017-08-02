@@ -21,8 +21,8 @@ module.exports = {
         rules: [
             { test: /.ts$/, use: '@ngtools/webpack' },
             {
-                test: /\.css$/,
-                use: ['to-string-loader', 'css-loader'],
+                test: /\.(css|scss)/,
+                use: ['to-string-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.html$/,
