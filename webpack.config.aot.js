@@ -14,10 +14,20 @@ let postcssLoader = {
     },
 };
 
+function isExternal(module) {
+    let userRequest = module.userRequest;
+
+    if (typeof userRequest !== 'string') {
+        return false;
+    }
+
+    return userRequest.indexOf('node_modules') >= 0;
+}
+
 module.exports = {
     entry: './src/index.ts',
     output: {
-        filename: './bundle.js'
+        filename: './bundle.[name].js'
     },
     resolve: {
         modules: [
@@ -81,6 +91,10 @@ module.exports = {
             template: 'src/index.html',
             inject: true,
             filename: "bundle.html",
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ["vendor"],
+            minChunks: isExternal
         }),
     ]
 };
