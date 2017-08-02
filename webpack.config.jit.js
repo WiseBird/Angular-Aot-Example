@@ -62,8 +62,9 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: 'raw-loader',
+                use: 'html-loader',
             },
+            {test: /\.(png|ico|gif)$/, loader: "file-loader?name=bundle.[name].[ext]"}
         ]
     },
     plugins: [
