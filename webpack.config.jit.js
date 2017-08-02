@@ -18,7 +18,19 @@ module.exports = {
         filename: './bundle.js'
     },
     resolve: {
-        extensions: ['.ts', '.js']
+        modules: [
+            "../node_modules",
+        ],
+        extensions: [
+            '.ts',
+            '.js',
+            '.html',
+            '.scss',
+        ],
+        alias: {
+            "caja": "html-css-sanitizer",
+            'resizeSensor': 'css-element-queries/src/ResizeSensor.js'
+        }
     },
     module: {
         rules: [
