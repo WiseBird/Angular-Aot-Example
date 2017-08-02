@@ -26,7 +26,9 @@ function isExternal(module) {
 module.exports = {
     entry: './src/index.ts',
     output: {
-        filename: './bundle.[name].js'
+        filename: './bundle.[name].js',
+        library: '[name]',
+        libraryTarget: "var"
     },
     resolve: {
         modules: [
