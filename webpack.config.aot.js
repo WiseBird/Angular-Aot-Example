@@ -6,6 +6,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let postcssLoader = {
         loader: 'postcss-loader',
@@ -117,5 +118,15 @@ module.exports = {
         new OptimizeJsPlugin({
             sourceMap: false
         }),
+        // new OptimizeCssAssetsPlugin({
+        //     cssProcessorOptions: {
+        //         discardUnused: false,
+        //         discardDuplicates: {removeAll: true},
+        //         discardComments: {removeAll: true},
+        //         zindex: false,
+        //         reduceIdents: false,
+        //     },
+        //     canPrint: false,
+        // }),
     ]
 };
