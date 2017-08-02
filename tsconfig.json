@@ -7,6 +7,8 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "sourceMap": true,
+    "noEmit": true,
+    "noEmitHelpers": true,
     "baseUrl": ".",
     "typeRoots": [
       "./node_modules/@types"
