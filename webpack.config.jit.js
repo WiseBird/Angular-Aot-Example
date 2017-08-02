@@ -12,7 +12,22 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /.ts$/, use: 'awesome-typescript-loader' }
+            {
+                test: /.ts$/,
+                use: [{
+                    loader: 'awesome-typescript-loader',
+                }, {
+                    loader: 'angular2-template-loader',
+                }],
+            },
+            {
+                test: /\.css$/,
+                use: ['to-string-loader', 'css-loader'],
+            },
+            {
+                test: /\.html$/,
+                use: 'raw-loader',
+            },
         ]
     },
     plugins: [

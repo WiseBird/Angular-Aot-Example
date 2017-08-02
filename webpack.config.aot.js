@@ -19,7 +19,15 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /.ts$/, use: '@ngtools/webpack', exclude: /node_modules/ }
+            { test: /.ts$/, use: '@ngtools/webpack' },
+            {
+                test: /\.css$/,
+                use: ['to-string-loader', 'css-loader'],
+            },
+            {
+                test: /\.html$/,
+                use: 'raw-loader',
+            },
         ]
     },
     plugins: [
