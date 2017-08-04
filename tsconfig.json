@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es2015",
+    "module": "commonjs",
     "target": "es5",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -8,7 +8,6 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "noEmit": true,
-    "noEmitHelpers": true,
     "baseUrl": ".",
     "typeRoots": [
       "./node_modules/@types"
