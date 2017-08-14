@@ -1,4 +1,4 @@
-// const path = require('path');
+const path = require('path');
 const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ngcWebpack = require('ngc-webpack');
@@ -49,6 +49,12 @@ module.exports = {
             'resizeSensor': 'css-element-queries/src/ResizeSensor.js'
         }
     },
+    resolveLoader: {
+        modules: [
+            'node_modules',
+            path.resolve(__dirname, 'loaders'),
+        ],
+    },
     module: {
         rules: [
             {
@@ -84,7 +90,10 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: 'html-loader',
+                use: [
+                    'html-loader',
+                    'custom-loader',
+                ],
             },
             {test: /\.(png|ico|gif)$/, loader: "file-loader?name=bundle.[name].[ext]"}
         ]

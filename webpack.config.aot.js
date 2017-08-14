@@ -49,6 +49,12 @@ module.exports = {
             'resizeSensor': 'css-element-queries/src/ResizeSensor.js'
         }
     },
+    resolveLoader: {
+        modules: [
+            'node_modules',
+            path.resolve(__dirname, 'loaders'),
+        ],
+    },
     module: {
         rules: [
             { test: /.ts$/, use: '@ngtools/webpack' },
@@ -65,7 +71,10 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: 'html-loader',
+                use: [
+                    'html-loader',
+                    'custom-loader',
+                ],
             },
             {test: /\.(png|ico|gif)$/, loader: "file-loader?name=bundle.[name].[ext]"}
         ]
