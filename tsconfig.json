@@ -9,6 +9,9 @@
     "sourceMap": true,
     "noEmit": true,
     "baseUrl": ".",
+    "paths": {
+      "home/*": ["./app/home/*"]
+    },
     "typeRoots": [
       "./node_modules/@types"
     ],

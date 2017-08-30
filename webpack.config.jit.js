@@ -45,7 +45,8 @@ module.exports = {
         ],
         alias: {
             "caja": "html-css-sanitizer",
-            'resizeSensor': 'css-element-queries/src/ResizeSensor.js'
+            'resizeSensor': 'css-element-queries/src/ResizeSensor.js',
+            "home": path.resolve('./src/app/home'),
         }
     },
     resolveLoader: {
