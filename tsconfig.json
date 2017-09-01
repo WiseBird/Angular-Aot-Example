@@ -10,7 +10,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "home/*": ["./app/home/*"]
+      "home/*": ["./src/app/home/*"]
     },
     "typeRoots": [
       "./node_modules/@types"
