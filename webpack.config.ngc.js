@@ -6,7 +6,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 let postcssLoader = {
     loader: 'postcss-loader',
@@ -16,6 +15,17 @@ let postcssLoader = {
         ],
     },
 };
+
+let cssLoaders = [
+    {
+        loader: 'css-loader',
+        options: {
+            minimize: true,
+        }
+    },
+    postcssLoader,
+    'sass-loader',
+];
 
 function isExternal(module) {
     let userRequest = module.userRequest;
@@ -81,13 +91,13 @@ module.exports = {
             },
             {
                 test: /app.*\.(css|scss)/,
-                use: ['to-string-loader', 'css-loader', postcssLoader, 'sass-loader'],
+                use: ['to-string-loader', ...cssLoaders],
             },
             {
                 test: /\.(css|scss)$/,
                 exclude: /app/,
                 loader: ExtractTextPlugin.extract({
-                    use: ['css-loader', postcssLoader, 'sass-loader'],
+                    use: [...cssLoaders],
                 })
             },
             {
@@ -152,16 +162,6 @@ module.exports = {
         // }),
         // new OptimizeJsPlugin({
         //     sourceMap: false
-        // }),
-        // new OptimizeCssAssetsPlugin({
-        //     cssProcessorOptions: {
-        //         discardUnused: false,
-        //         discardDuplicates: {removeAll: true},
-        //         discardComments: {removeAll: true},
-        //         zindex: false,
-        //         reduceIdents: false,
-        //     },
-        //     canPrint: false,
         // }),
     ]
 };
