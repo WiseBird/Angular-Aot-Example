@@ -70,7 +70,10 @@ module.exports = {
                 }, {
                     loader: 'awesome-typescript-loader',
                 }, {
-                    loader: 'angular2-template-loader',
+                    loader: 'custom-angular2-template-loader',
+                    options: {
+                        keepNonRelative: true,
+                    }
                 }],
             },
             {
