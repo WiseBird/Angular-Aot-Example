@@ -42,5 +42,10 @@
     "optimize-css-assets-webpack-plugin": "3.0.0",
     "webpack": "3.3.0",
     "webpack-dev-server": "2.6.1"
+  },
+  "scripts": {
+    "jit": "webpack --config webpack.config.jit.js",
+    "aot": "webpack --config webpack.config.aot.js",
+    "ngc": "webpack --config webpack.config.ngc.js"
   }
 }
