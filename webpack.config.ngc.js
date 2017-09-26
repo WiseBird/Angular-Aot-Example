@@ -30,6 +30,7 @@ function isExternal(module) {
 module.exports = {
     entry: './src/index-aot.ts',
     output: {
+        path: path.resolve(__dirname, 'bundle'),
         filename: './bundle.[name].js',
         library: '[name]',
         libraryTarget: "var"
