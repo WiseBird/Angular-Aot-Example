@@ -1,0 +1,1 @@
+Example of the app that supports AoT build via ngtools/ngc and uses real world webpack configuration (ts, scss, chunks, lazy modules, custom loader). 
