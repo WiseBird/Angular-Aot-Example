@@ -2,3 +2,10 @@
     {{title}}
 </h1>
 <router-outlet></router-outlet>
+
+<form [formGroup]="form">
+    <input type="text"
+           formControlName="name"
+    />
+    <span>{{ form.controls["name"].errors?.required }}</span>
+</form>
