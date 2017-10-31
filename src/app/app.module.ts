@@ -9,6 +9,7 @@ import {EmptyComponent} from './empty/empty.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EntryComponent} from './entry/entry.component';
 import {Ng2BootstrapModule} from 'ngx-bootstrap';
+import {LibModule} from '../../lib/lib.module';
 
 @NgModule({
               imports: [
@@ -18,6 +19,7 @@ import {Ng2BootstrapModule} from 'ngx-bootstrap';
                   RouterModule.forRoot(appRoutes, appRoutingOpts),
 
                   Ng2BootstrapModule.forRoot(),
+                  LibModule/*.forRoot()*/,
               ],
               declarations: [
                   AppComponent,
