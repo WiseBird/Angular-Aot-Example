@@ -72,7 +72,7 @@ module.exports = {
             { test: /.ts$/, use: '@ngtools/webpack' },
             {
                 test: /app.*\.(css|scss)/,
-                use: ['to-string-loader', ...cssLoaders],
+                use: ['raw-loader'],
             },
             {
                 test: /\.(css|scss)$/,
