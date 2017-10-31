@@ -12,6 +12,7 @@
     "@angular/platform-browser-dynamic": "4.4.6",
     "@angular/router": "4.4.6",
     "core-js": "2.4.1",
+    "ngx-bootstrap": "1.9.3",
     "rxjs": "5.4.2",
     "reflect-metadata": "0.1.10",
     "zone.js": "0.8.16"
