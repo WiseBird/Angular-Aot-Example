@@ -7,6 +7,7 @@ import {HomeComponent} from 'home/home.component';
 import {appRoutes, appRoutingOpts} from './app.routing';
 import {EmptyComponent} from './empty/empty.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EntryComponent} from './entry/entry.component';
 
 @NgModule({
               imports: [
@@ -19,6 +20,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
                   AppComponent,
                   HomeComponent,
                   EmptyComponent,
+                  EntryComponent,
+              ],
+              entryComponents: [
+                  EntryComponent,
               ],
               bootstrap: [
                   AppComponent,
