@@ -47,6 +47,9 @@
   "scripts": {
     "jit": "webpack --config webpack.config.jit.js",
     "aot": "webpack --config webpack.config.aot.js",
-    "ngc": "webpack --config webpack.config.ngc.js"
+    "ngc": "webpack --config webpack.config.ngc.js",
+    "jit:debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack.config.jit.js",
+    "aot:debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack.config.aot.js",
+    "ngc:debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack.config.ngc.js"
   }
 }
