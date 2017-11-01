@@ -19,7 +19,7 @@ import {LibModule} from '../../lib/lib.module';
                   RouterModule.forRoot(appRoutes, appRoutingOpts),
 
                   Ng2BootstrapModule.forRoot(),
-                  LibModule/*.forRoot()*/,
+                  LibModule.forRoot(),
               ],
               declarations: [
                   AppComponent,

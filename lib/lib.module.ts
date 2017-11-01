@@ -14,7 +14,7 @@ import {LibComponent} from './lib.component';
 export class LibModule {
     static forRoot(): ModuleWithProviders {
         return {
-            ngModule: this,
+            ngModule: LibModule,
             providers: [
             ],
         };
