@@ -69,7 +69,10 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /.ts$/, use: '@ngtools/webpack' },
+            {
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+                use: [ '@ngtools/webpack' ]
+            },
             {
                 test: /app.*\.(css|scss)/,
                 use: ['raw-loader'],
@@ -93,9 +96,8 @@ module.exports = {
     },
     plugins: [
         new NamedModulesPlugin(),
-        new ngToolsWebpack.AotPlugin({
+        new ngToolsWebpack.AngularCompilerPlugin({
             tsConfigPath: './tsconfig.json',
-            skipMetadataEmit: true,
             entryModule: 'src/app/app.module#AppModule',
         }),
         new ExtractTextPlugin("bundle.css"),

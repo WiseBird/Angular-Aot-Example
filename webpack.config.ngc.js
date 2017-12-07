@@ -38,7 +38,7 @@ function isExternal(module) {
 }
 
 module.exports = {
-    entry: './src/index-aot.ts',
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'bundle'),
         filename: './bundle.[name].js',
@@ -70,24 +70,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.ts$/,
-                use: [{
-                    loader: 'ng-router-loader',
-                    options: {
-                        loader: 'async-import',
-                        genDir: 'compiled',
-                        aot: true,
-                    }
-                }, {
-                    loader: 'awesome-typescript-loader',
-                }, {
-                    loader: 'ngc-webpack',
-                    options: {
-                        disable: false,
-                    }
-                }, {
-                    loader: 'angular2-template-loader',
-                }],
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+                use: [ '@ngtools/webpack' ]
             },
             {
                 test: /app.*\.(css|scss)/,
@@ -112,15 +96,9 @@ module.exports = {
     },
     plugins: [
         new NamedModulesPlugin(),
-        // Suppressing warnings: 'Critical dependency: the request of a dependency is an expression'
-        new webpack.ContextReplacementPlugin(
-            // The (\\|\/) piece accounts for path separators in *nix and Windows
-            /angular(\\|\/)core(\\|\/)@angular/,
-            'src'
-        ),
         new ngcWebpack.NgcWebpackPlugin({
-            disabled: false,
-            tsConfig: './tsconfig.json',
+            tsConfigPath: './tsconfig.json',
+            entryModule: 'src/app/app.module#AppModule',
         }),
         new ExtractTextPlugin("bundle.css"),
         new webpack.optimize.ModuleConcatenationPlugin(),

@@ -7,7 +7,6 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "home/*": ["./src/app/home/*"]

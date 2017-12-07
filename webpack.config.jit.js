@@ -109,7 +109,7 @@ module.exports = {
         // Suppressing warnings: 'Critical dependency: the request of a dependency is an expression'
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
-            /angular(\\|\/)core(\\|\/)@angular/,
+            /angular(\\|\/)core(\\|\/)(@angular|esm5)/,
             'src'
         ),
         new ExtractTextPlugin("bundle.css"),
