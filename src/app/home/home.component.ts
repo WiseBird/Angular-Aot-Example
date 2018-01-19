@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, ElementRef, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, ComponentFactoryResolver, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {EntryComponent} from '../entry/entry.component';
 
 @Component({
@@ -7,7 +7,7 @@ import {EntryComponent} from '../entry/entry.component';
                styleUrls: ['./home.component.scss']
            })
 export class HomeComponent implements OnInit {
-    title = 'Home!';
+    @Input() title = 'Home!';
 
     constructor(
         private viewContainerRef: ViewContainerRef,
