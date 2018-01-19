@@ -7,6 +7,9 @@ export const appRoutes: Routes = [{
 }, {
     path: 'lazy',
     loadChildren: './lazy/lazy.module#LazyModule',
+}, {
+    path: 'framework',
+    loadChildren: './framework/framework.module#FrameworkModule',
 }];
 
 export const appRoutingOpts: ExtraOptions = {
