@@ -1,5 +1,7 @@
-import {Routes, ExtraOptions} from '@angular/router';
+import {ModuleWithProviders} from '@angular/core';
+import {Routes, ExtraOptions, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
+import {AddSecurityGuard, SecurityGuard} from './security.guard';
 
 export const appRoutes: Routes = [{
     path: '',
@@ -12,7 +14,19 @@ export const appRoutes: Routes = [{
     loadChildren: './framework/framework.module#FrameworkModule',
 }];
 
+AddSecurityGuard(...appRoutes);
+
 export const appRoutingOpts: ExtraOptions = {
     useHash: false,
     enableTracing: false,
 };
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(
+    appRoutes,
+    appRoutingOpts,
+);
+
+
+export const appRoutingProviders: any[] = [
+    SecurityGuard,
+];

@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './root/app.component';
 import {HomeComponent} from 'home/home.component';
-import {appRoutes, appRoutingOpts} from './app.routing';
+import {appRoutingProviders, routing} from './app.routing';
 import {EmptyComponent} from './empty/empty.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EntryComponent} from './entry/entry.component';
@@ -16,10 +16,11 @@ import {LibModule} from '../../lib/lib.module';
                   BrowserModule,
                   FormsModule,
                   ReactiveFormsModule,
-                  RouterModule.forRoot(appRoutes, appRoutingOpts),
 
                   Ng2BootstrapModule.forRoot(),
                   LibModule.forRoot(),
+
+                  routing,
               ],
               declarations: [
                   AppComponent,
@@ -33,7 +34,9 @@ import {LibModule} from '../../lib/lib.module';
               bootstrap: [
                   AppComponent,
               ],
-              providers: [],
+              providers: [
+                  appRoutingProviders,
+              ],
           })
 export class AppModule {
 }
