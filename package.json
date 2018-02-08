@@ -10,15 +10,15 @@
     "ngc:debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack.config.ngc.js"
   },
   "dependencies": {
-    "@angular/animations": "5.2.1",
-    "@angular/common": "5.2.1",
-    "@angular/compiler": "5.2.1",
-    "@angular/core": "5.2.1",
-    "@angular/forms": "5.2.1",
-    "@angular/http": "5.2.1",
-    "@angular/platform-browser": "5.2.1",
-    "@angular/platform-browser-dynamic": "5.2.1",
-    "@angular/router": "5.2.1",
+    "@angular/animations": "5.2.4",
+    "@angular/common": "5.2.4",
+    "@angular/compiler": "5.2.4",
+    "@angular/core": "5.2.4",
+    "@angular/forms": "5.2.4",
+    "@angular/http": "5.2.4",
+    "@angular/platform-browser": "5.2.4",
+    "@angular/platform-browser-dynamic": "5.2.4",
+    "@angular/router": "5.2.4",
     "core-js": "2.5.3",
     "ngx-bootstrap": "2.0.0-beta.6",
     "reflect-metadata": "0.1.12",
@@ -26,10 +26,10 @@
     "zone.js": "0.8.20"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "5.2.1",
-    "@angular/language-service": "5.2.1",
-    "@ngtools/webpack": "1.9.5",
-    "@types/jasmine": "2.8.4",
+    "@angular/compiler-cli": "5.2.4",
+    "@angular/language-service": "5.2.4",
+    "@ngtools/webpack": "1.9.8",
+    "@types/jasmine": "2.8.6",
     "@types/requirejs": "2.1.31",
     "angular2-template-loader": "0.6.2",
     "autoprefixer": "7.2.5",
@@ -44,13 +44,13 @@
     "ngc-webpack": "4.1.2",
     "node-sass": "4.7.2",
     "optimize-js-plugin": "0.0.4",
-    "postcss-loader": "2.0.10",
+    "postcss-loader": "2.1.0",
     "progress-bar-webpack-plugin": "1.10.0",
     "raw-loader": "0.5.1",
     "sass-loader": "6.0.6",
     "to-string-loader": "1.1.5",
-    "typescript": "2.6.2",
+    "typescript": "2.7.1",
     "webpack": "3.10.0",
-    "webpack-dev-server": "2.11.0"
+    "webpack-dev-server": "2.11.1"
   }
 }
