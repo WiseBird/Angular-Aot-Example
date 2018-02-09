@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
+import {ToastrModule} from 'ngx-toastr';
+import {NotificationService} from './notification.service';
 
 import {AppComponent} from './root/app.component';
 import {HomeComponent} from 'home/home.component';
@@ -17,6 +18,7 @@ import {LibModule} from '../../lib/lib.module';
                   FormsModule,
                   ReactiveFormsModule,
 
+                  ToastrModule.forRoot(),
                   Ng2BootstrapModule.forRoot(),
                   LibModule.forRoot(),
 
@@ -36,6 +38,7 @@ import {LibModule} from '../../lib/lib.module';
               ],
               providers: [
                   appRoutingProviders,
+                  NotificationService,
               ],
           })
 export class AppModule {
