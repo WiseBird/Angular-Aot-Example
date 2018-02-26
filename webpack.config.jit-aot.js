@@ -75,7 +75,7 @@ module.exports = {
                 }, {
                     loader: 'angular-router-loader',
                     options: {
-                        // loader: 'async-import',
+                        loader: 'import',
                         aot: true,
                     }
                 }, {
