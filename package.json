@@ -2,12 +2,14 @@
   "name": "aot_test",
   "version": "0.0.1",
   "scripts": {
+    "jit-aot": "ngc -p tsconfig.jit-aot.json && webpack --config webpack.config.jit-aot.js",
+    "jit-aot:debug": "ngc -p tsconfig.jit-aot.json && node --inspect-brk node_modules/.bin/webpack --config webpack.config.jit-aot.js",
     "aot": "webpack --config webpack.config.aot.js",
-    "aot:debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack.config.aot.js",
+    "aot:debug": "node --inspect-brk node_modules/.bin/webpack --config webpack.config.aot.js",
     "jit": "webpack --config webpack.config.jit.js",
-    "jit:debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack.config.jit.js",
+    "jit:debug": "node --inspect-brk node_modules/.bin/webpack --config webpack.config.jit.js",
     "ngc": "webpack --config webpack.config.ngc.js",
-    "ngc:debug": "node --inspect --debug-brk node_modules/.bin/webpack --config webpack.config.ngc.js"
+    "ngc:debug": "node --inspect-brk node_modules/.bin/webpack --config webpack.config.ngc.js"
   },
   "dependencies": {
     "@angular/animations": "5.2.4",
@@ -33,6 +35,7 @@
     "@types/jasmine": "2.8.6",
     "@types/requirejs": "2.1.31",
     "angular2-template-loader": "0.6.2",
+    "angular-router-loader": "0.8.2",
     "autoprefixer": "7.2.5",
     "awesome-typescript-loader": "3.4.1",
     "css-loader": "0.28.9",

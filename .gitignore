@@ -3,3 +3,6 @@ node_modules
 bundle.*
 compiled
 npm-debug
+*.js
+*.js.map
+*.json

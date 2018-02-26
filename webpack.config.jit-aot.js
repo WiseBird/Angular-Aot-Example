@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
-const ngcWebpack = require('ngc-webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -38,7 +37,7 @@ function isExternal(module) {
 }
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/index-aot.ts',
     output: {
         path: path.resolve(__dirname, 'bundle'),
         filename: './bundle.[name].js',
@@ -70,8 +69,18 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-                use: [ '@ngtools/webpack' ]
+                test: /.ts$/,
+                use: [{
+                    loader: 'awesome-typescript-loader',
+                }, {
+                    loader: 'angular-router-loader',
+                    options: {
+                        // loader: 'async-import',
+                        aot: true,
+                    }
+                }, {
+                    loader: 'angular2-template-loader',
+                }],
             },
             {
                 test: /app.*\.(css|scss)$/,
@@ -96,10 +105,12 @@ module.exports = {
     },
     plugins: [
         new NamedModulesPlugin(),
-        new ngcWebpack.NgcWebpackPlugin({
-            tsConfigPath: './tsconfig.json',
-            entryModule: 'src/app/app.module#AppModule',
-        }),
+        // Suppressing warnings: 'Critical dependency: the request of a dependency is an expression'
+        new webpack.ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
+            /angular(\\|\/)core(\\|\/)(@angular|esm5)/,
+            'src'
+        ),
         new ExtractTextPlugin("bundle.css"),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.ProvidePlugin({

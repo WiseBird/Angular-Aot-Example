@@ -8,9 +8,9 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
 
 let postcssLoader = {
-        loader: 'postcss-loader',
-        options: {
-            plugins: () => [
+    loader: 'postcss-loader',
+    options: {
+        plugins: () => [
             require('autoprefixer')({browsers: 'last 3 Chrome versions'}),
         ],
     },
@@ -71,11 +71,11 @@ module.exports = {
         rules: [
             {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-                use: [ '@ngtools/webpack' ]
+                use: ['@ngtools/webpack']
             },
             {
-                test: /app.*\.(css|scss)/,
-                use: ['raw-loader'],
+                test: /app.*\.(css|scss)$/,
+                use: ['to-string-loader', ...cssLoaders],
             },
             {
                 test: /\.(css|scss)$/,

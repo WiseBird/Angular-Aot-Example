@@ -24,10 +24,9 @@
     "dom"
   ],
   "exclude": [
-    "node_modules",
-    "src/index-aot.ts"
+    "node_modules"
   ],
   "angularCompilerOptions": {
-    "genDir": "./compiled"
+    "skipMetadataEmit" : true
   }
 }
