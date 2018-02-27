@@ -84,7 +84,7 @@ module.exports = {
                 }],
             },
             {
-                test: /app.*\.(css|scss)/,
+                test: /app.*\.(css|scss)$/,
                 use: ['to-string-loader', ...cssLoaders],
             },
             {
