@@ -4,7 +4,6 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const OptimizeJsPlugin = require('optimize-js-plugin');
 
 let postcssLoader = {
     loader: 'postcss-loader',
@@ -148,9 +147,6 @@ module.exports = {
         //         drop_console: false,
         //         warnings: false,
         //     },
-        // }),
-        // new OptimizeJsPlugin({
-        //     sourceMap: false
         // }),
     ]
 };
