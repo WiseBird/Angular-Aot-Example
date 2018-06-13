@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
@@ -25,17 +25,8 @@ let cssLoaders = [
     'sass-loader',
 ];
 
-function isExternal(module) {
-    let userRequest = module.userRequest;
-
-    if (typeof userRequest !== 'string') {
-        return false;
-    }
-
-    return userRequest.indexOf('node_modules') >= 0;
-}
-
 module.exports = {
+    mode: 'production',
     entry: './src/index-aot.ts',
     output: {
         path: path.resolve(__dirname, 'bundle'),
@@ -88,9 +79,7 @@ module.exports = {
             {
                 test: /\.(css|scss)$/,
                 exclude: /app/,
-                loader: ExtractTextPlugin.extract({
-                    use: [...cssLoaders],
-                })
+                use: [MiniCssExtractPlugin.loader, ...cssLoaders],
             },
             {
                 test: /\.html$/,
@@ -110,7 +99,7 @@ module.exports = {
             /angular(\\|\/)core(\\|\/)(@angular|esm5)/,
             'src'
         ),
-        new ExtractTextPlugin("bundle.css"),
+        new MiniCssExtractPlugin({filename: "bundle.css"}),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.ProvidePlugin({
             $: "jquery",
@@ -129,24 +118,22 @@ module.exports = {
             template: 'src/index.html',
             inject: true,
             filename: "bundle.html",
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ["vendor"],
-            minChunks: isExternal
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ["manifest"],
-            minChunks: Infinity
+            chunksSortMode: 'none',
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new ProgressBarPlugin(),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         unused: true,
-        //         dead_code: true,
-        //         drop_console: false,
-        //         warnings: false,
-        //     },
-        // }),
-    ]
+        // new webpack.optimize.UglifyJ
+    ],
+    optimization: {
+        minimizer: [],
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                },
+            },
+        },
+    },
 };
